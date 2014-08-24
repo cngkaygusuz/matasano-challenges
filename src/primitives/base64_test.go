@@ -10,7 +10,7 @@ func Test_6bytes(t *testing.T) {
 	var hexobj Hex
 	expected := "TWFuTWFu"
 
-	hexobj.data = []byte("ManMan")
+	hexobj.Data = []byte("ManMan")
 
 	b64 := base64_from_hex(&hexobj)
 
@@ -28,7 +28,7 @@ func Test_longbytes(t *testing.T) {
 	input := "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
 	expected := "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
 
-	bstr := hex_from_string(input)
+	bstr := Hex_from_string(input)
 	b64 := base64_from_hex(&bstr)
 
 	if b64.data != expected {

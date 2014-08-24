@@ -61,7 +61,7 @@ func (h *Hex) Len() int {
 	return len(h.Data)
 }
 
-func (h *Hex) As_str() string {
+func (h *Hex) dump() string {
 	return fmt.Sprintf("%x", h.Data)
 }
 
