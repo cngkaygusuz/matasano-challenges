@@ -28,7 +28,7 @@ type Base64 struct {
 	data	string
 }
 
-func base64_from_hex(hexobj *Hex) Base64 {
+func Base64_from_hex(hexobj *Hex) Base64 {
 	var b64obj Base64
 
 	i := 0
@@ -43,9 +43,9 @@ func base64_from_hex(hexobj *Hex) Base64 {
 		case 0:
 			goto breakloop
 		case 1:
-			fmt.Println("Not implemented")
+			fmt.Println("NOT IMPLEMENTED SOMETHING WILL GO BAD DO THIS NOW.")
 		case 2:
-			fmt.Println("Not implemented")
+			fmt.Println("NOT IMPLEMENTED SOMETHING WILL GO BAD DO THIS NOW.")
 		case 3:
 			var i1, i2, i3, i4 byte
 			i1 = rb[0]

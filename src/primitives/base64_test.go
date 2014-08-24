@@ -12,7 +12,7 @@ func Test_6bytes(t *testing.T) {
 
 	hexobj.Data = []byte("ManMan")
 
-	b64 := base64_from_hex(&hexobj)
+	b64 := Base64_from_hex(&hexobj)
 
 	if len(b64.data) != 8 {
 		t.Errorf("Expected length 8, got %d", len(b64.data))
@@ -29,7 +29,7 @@ func Test_longbytes(t *testing.T) {
 	expected := "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
 
 	bstr := Hex_from_string(input)
-	b64 := base64_from_hex(&bstr)
+	b64 := Base64_from_hex(&bstr)
 
 	if b64.data != expected {
 		t.Errorf("Matasano challenge not met. Produced string and expected string given respectively.\n%s\n%s\n", b64.data, expected)
