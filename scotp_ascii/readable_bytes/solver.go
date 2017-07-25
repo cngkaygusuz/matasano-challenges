@@ -1,4 +1,4 @@
-package scotp_ascii
+package readable_bytes
 
 import "github.com/cngkaygusuz/matasano-challenges/common"
 
