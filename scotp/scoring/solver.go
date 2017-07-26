@@ -38,6 +38,8 @@ func score_byte(b byte) int {
 		return -10
 	} else if b == 32 { // case b is space
 		return 100
+	} else if b == '\n' { // case b is newline character
+		return 100
 	} else if 65 <= b && b <= 90 { // case b is a capital alphabet character
 		return 100
 	} else if 97 <= b && b <= 122 { // case b is a lowercase alphabet character
