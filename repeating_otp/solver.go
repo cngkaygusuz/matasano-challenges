@@ -28,11 +28,11 @@ func Solve(ciphertext []byte) (plaintext, key []byte ) {
 }
 
 func solve_for_keysize(ciphertext []byte, key_size int) (plaintext, key []byte, score int) {
-	bins := common.Bin(ciphertext)
+	bins := common.Bin(ciphertext, key_size)
 	bins_transposed := common.Transpose(bins)
 
-	transposed_solved := make(byte[][], len(bins_transposed))
-	key = make(byte[], key_size)
+	transposed_solved := make([][]byte, len(bins_transposed))
+	key = make([]byte, key_size)
 
 	for i, bt := range bins_transposed {
 		round_solution , round_key, round_score := scoring.Solve(bt)
@@ -41,7 +41,8 @@ func solve_for_keysize(ciphertext []byte, key_size int) (plaintext, key []byte, 
 		score += round_score
 	}
 
-	plaintext := common.Transpose(transposed_solved)
+	plaintext_binned := common.Transpose(transposed_solved)
+	plaintext = common.Unbin(plaintext_binned)
 	return
 }
 
