@@ -29,6 +29,11 @@ func Solve(ciphertext []byte) (plaintext, key []byte ) {
 
 func solve_for_keysize(ciphertext []byte, key_size int) (plaintext, key []byte, score int) {
 	bins := common.Bin(ciphertext, key_size)
+
+	if len(bins[len(bins)-1]) != key_size {
+		bins = bins[0:len(bins)-1]
+	}
+
 	bins_transposed := common.Transpose(bins)
 
 	transposed_solved := make([][]byte, len(bins_transposed))
