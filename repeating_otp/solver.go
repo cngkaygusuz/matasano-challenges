@@ -7,15 +7,12 @@ import (
 	"github.com/cngkaygusuz/matasano-challenges/scotp/scoring"
 )
 
-const MIN_KEY_SIZE = 4
-const MAX_KEY_SIZE = 40
-
-func Solve(ciphertext []byte) (plaintext, key []byte, max_score int) {
-	key_sizes := guess_key_size(ciphertext)
+func Solve(ciphertext []byte, min_key_size, max_key_size int) (plaintext, key []byte, max_score int) {
+	key_sizes := guess_key_size(ciphertext, min_key_size, max_key_size)
 
 	max_score = -2147483640
 	for _, ks := range key_sizes {
-		if ks == -1 {
+		if ks == -1 { // this slot has not been touched for some reason, let's skip that.
 			continue
 		}
 
@@ -56,11 +53,11 @@ func solve_for_keysize(ciphertext []byte, key_size int) (plaintext, key []byte, 
 }
 
 
-func guess_key_size(ciphertext []byte) []int {
+func guess_key_size(ciphertext []byte, min_key_size, max_key_size int) []int {
 	retval := []int{-1, -1, -1, -1 ,-1, -1}
 	scores := []float64{1000000.0, 1000000.0, 1000000.0, 1000000.0, 1000000.0, 1000000.0}
 
-	for key_size := MIN_KEY_SIZE; key_size <= MAX_KEY_SIZE; key_size++ {
+	for key_size := min_key_size; key_size <= max_key_size; key_size++ {
 		current_score := get_score_for_size(ciphertext, key_size)
 		ind := get_biggest_smaller_than(current_score, scores)
 		if ind != -1 {
