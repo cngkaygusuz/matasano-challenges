@@ -4,15 +4,25 @@ import (
 	"testing"
 	"io/ioutil"
 	"github.com/stretchr/testify/require"
-	"encoding/base64"
+	"fmt"
+	"encoding/hex"
 )
 
 func Test_Solve_1(t *testing.T) {
-	input, err := ioutil.ReadFile("challenge-6.txt")
+	input, err := ioutil.ReadFile("challenge-6-raw")
 	require.Nil(t, err)
 
-	input_decoded := make([]byte, base64.StdEncoding.DecodedLen(len(input)))
-	base64.StdEncoding.Decode(input_decoded, input)
+	plaintext, key, score := Solve(input)
 
-	guess_key_size(input_decoded)
+	if plaintext == nil {
+		fmt.Printf("plaintext is nil\n")
+	} else if key == nil {
+		fmt.Printf("key is nil\n")
+	} else {
+		fmt.Printf("score: %d\n", score)
+		fmt.Printf("key length: %d\n", len(key))
+		fmt.Printf("key: %s\n", hex.EncodeToString(key))
+		fmt.Printf("key string: %s\n", string(key))
+		fmt.Printf("%s\n", plaintext)
+	}
 }
