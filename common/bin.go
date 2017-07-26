@@ -25,6 +25,22 @@ func Bin(input []byte, bin_size int) [][]byte {
 	return bins
 }
 
+func Unbin(input [][]byte) []byte {
+	if len(input) == 0 {
+		return []byte{}
+	}
+
+	slice_size := len(input[0])
+	input_length := len(input)
+	retval := make([]byte, 0, slice_size*input_length)
+
+	for _, input_elem := range input {
+		retval = append(retval, input_elem...)
+	}
+
+	return retval
+}
+
 func min(a, b int) int {
 	if a < b {
 		return a

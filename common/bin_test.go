@@ -36,3 +36,16 @@ func Test_Bin_OriginalArrayChange(t *testing.T) {
 
 	assert.Equal(t, expected, received)
 }
+
+func Test_Unbin(t *testing.T) {
+	input := [][]byte{
+		{1, 2, 3},
+		{4, 5, 6},
+	}
+
+	received := Unbin(input)
+
+	expected := []byte{1, 2, 3, 4, 5, 6}
+
+	assert.Equal(t, expected, received)
+}
