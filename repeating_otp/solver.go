@@ -8,13 +8,17 @@ import (
 )
 
 const MIN_KEY_SIZE = 4
-const MAX_KEY_SIZE = 60
+const MAX_KEY_SIZE = 40
 
-func Solve(ciphertext []byte) (plaintext, key []byte ) {
+func Solve(ciphertext []byte) (plaintext, key []byte, max_score int) {
 	key_sizes := guess_key_size(ciphertext)
 
-	var max_score int
+	max_score = -2147483640
 	for _, ks := range key_sizes {
+		if ks == -1 {
+			continue
+		}
+
 		candidate_plaintext, candidate_key, score := solve_for_keysize(ciphertext, ks)
 
 		if score > max_score {
@@ -53,8 +57,8 @@ func solve_for_keysize(ciphertext []byte, key_size int) (plaintext, key []byte, 
 
 
 func guess_key_size(ciphertext []byte) []int {
-	retval := []int{-1, -1, -1}
-	scores := []float64{1000000.0, 1000000.0, 1000000.0}
+	retval := []int{-1, -1, -1, -1 ,-1, -1}
+	scores := []float64{1000000.0, 1000000.0, 1000000.0, 1000000.0, 1000000.0, 1000000.0}
 
 	for key_size := MIN_KEY_SIZE; key_size <= MAX_KEY_SIZE; key_size++ {
 		current_score := get_score_for_size(ciphertext, key_size)
@@ -91,8 +95,11 @@ func get_biggest_smaller_than(current_score float64, input []float64, ) int {
 }
 
 func get_score_for_size(ciphertext []byte, key_size int) float64 {
-	first := ciphertext[0:key_size]
-	second := ciphertext[key_size : key_size*2]
-	distance := distance2.Hamming(first, second)
-	return float64(distance) / float64(key_size)
+	total_hamming_distance := 0
+	bins := common.Bin(ciphertext, key_size)
+	for i := 0; i < len(bins) / 2; i++ {
+		total_hamming_distance += distance2.Hamming(bins[i], bins[i*2])
+	}
+
+	return float64(total_hamming_distance) / (float64(key_size) * float64(len(bins)))
 }
