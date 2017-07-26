@@ -4,7 +4,7 @@ import (
 	"github.com/cngkaygusuz/matasano-challenges/common"
 )
 
-func Solve(ciphertext []byte) ([]byte, byte) {
+func Solve(ciphertext []byte) ([]byte, byte, int) {
 	candidate := make([]byte, len(ciphertext))
 
 	var best_guess []byte = make([]byte, len(ciphertext))
@@ -30,7 +30,7 @@ func Solve(ciphertext []byte) ([]byte, byte) {
 
 	}
 
-	return best_guess, best_guess_key
+	return best_guess, best_guess_key, best_guess_score
 }
 
 func score_byte(b byte) int {
