@@ -1,17 +1,20 @@
 package common
 
-func Bin(input []byte, key_size int) [][]byte {
-	if len(input) < key_size {
+
+// Bin the input given the size
+// This function copies the input array
+func Bin(input []byte, bin_size int) [][]byte {
+	if len(input) < bin_size {
 		panic("length of input cannot be smaller than key size")
 	}
 
 	input_len := len(input)
-	bin_length :=  ((input_len - 1) / key_size) + 1
+	bin_length :=  ((input_len - 1) / bin_size) + 1
 
 	bins := make([][]byte, bin_length)
 
 	for i := 0; i < bin_length; i++ {
-		bin := input[(i*key_size):min(input_len, (i+1)*key_size)]
+		bin := input[(i* bin_size):min(input_len, (i+1)*bin_size)]
 
 		bin_copied := make([]byte, len(bin))
 		copy(bin_copied, bin)
