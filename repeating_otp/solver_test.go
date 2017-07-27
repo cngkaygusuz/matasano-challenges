@@ -8,6 +8,7 @@ import (
 	"encoding/hex"
 )
 
+// Matasano 6
 func Test_Solve_1(t *testing.T) {
 	input, err := ioutil.ReadFile("challenge-6-raw")
 	require.Nil(t, err)
