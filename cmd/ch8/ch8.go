@@ -29,7 +29,7 @@ func main() {
 func detect_aes128(input []byte) bool {
 	bins := common.Bin(input, 16)
 
-	for i := 0; i < len(bins)/2; i++ {
+	for i := 0; i <= len(bins)/2; i++ {
 		for j := i+1; j < len(bins); j++ {
 			if common.EqualBytes(bins[i], bins[j]) {
 				return true
