@@ -13,6 +13,7 @@ func Transpose(input [][]byte) [][]byte {
 			log.Printf("each element in input should have the same length")
 			log.Printf("first slice size: %d", slice_size)
 			log.Printf("length of element %d: %d", i, len(input[i]))
+			panic("element size mismatch")
 		}
 	}
 
