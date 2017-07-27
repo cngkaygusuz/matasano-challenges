@@ -9,7 +9,7 @@ func Decrypt(ciphertext, key []byte) []byte {
 	cipher, err := aes.NewCipher(key)
 	common.PanicOnErr(err)
 
-	retval := make([]byte, len(ciphertext) + 16)
+	retval := make([]byte, len(ciphertext) + 32)
 
 	cipher.Decrypt(retval, ciphertext)
 
