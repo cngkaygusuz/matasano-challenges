@@ -38,7 +38,7 @@ go run ch8
 ```
 
 
-#AN IMPORTANT NOTE
+# AN IMPORTANT NOTE
 This code is NOT cryptographically safe and it will not provide you security you are trying to establish. You are
 most welcome inspecting the code for educational purposes and playing with it, but do not, >> DO NOT << use this code
 in an environment that is even remotely trying to be secure. Always use well-tested and trusted public libraries for
