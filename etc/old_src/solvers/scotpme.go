@@ -15,7 +15,7 @@ import (
 // with a single byte key amongst multiple values.
 
 func main() {
-	// Matasano 4
+	// Matasano 1.3
 
 	ciphertextspathPtr := flag.String("ctextpath", "", "Ciphertext to be broken.")
 	dictpathPtr := flag.String("dictpath", "", "Path to the text file to be used as dictionary")

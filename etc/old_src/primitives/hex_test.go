@@ -23,7 +23,7 @@ func Test_fromstring(t *testing.T) {
 }
 
 func Test_xor(t *testing.T) {
-	// Matasano 2
+	// Matasano 1.2
 	hex1 := Hex_from_string("1c0111001f010100061a024b53535009181c")
 	hex2 := Hex_from_string("686974207468652062756c6c277320657965")
 

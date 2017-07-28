@@ -8,7 +8,7 @@ import (
 )
 
 
-// Matasano 7
+// Matasano 1.7
 func Test_Decrypt_1(t *testing.T) {
 	input, err := ioutil.ReadFile("challenge-7-raw")
 	require.Nil(t, err)

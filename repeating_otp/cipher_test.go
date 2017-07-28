@@ -32,7 +32,7 @@ func Test_RepeatingOTP_2(t *testing.T) {
 	assert.Equal(t, expected, cipher.Ciphertext)
 }
 
-// Matasano 5
+// Matasano 1.5
 func Test_RepeatingOTP_Challenge(t *testing.T) {
 	c1 := Cipher{
 		Plaintext: []byte("Burning 'em, if you ain't quick and nimble"),

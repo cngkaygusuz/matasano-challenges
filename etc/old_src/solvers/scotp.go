@@ -15,7 +15,7 @@ import (
 // fixed value if there are any words recognized and returning the output with the highest score.
 
 func main() {
-	// Matasano 3
+	// Matasano 1.3
 
 	ciphertextPtr := flag.String("ciphertext", "", "Ciphertext to be broken.")
 	dictpathPtr := flag.String("dictpath", "", "Path to the text file to be used as dictionary")
