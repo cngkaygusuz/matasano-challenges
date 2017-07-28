@@ -7,7 +7,9 @@ The code is not organized around the challenges itself. Some are in tests, some 
 with my primary concern being maximising code re-usage as much as possible. If you want to just see the parts where
 the challenge is actually tackled, I marked the points-of-interest by a comment like
 
-> // Matasano <challenge_number>
+```go
+// Matasano 1.5
+```
 
 You can search the code to find them. My favorite way to do so is by the program `ag`
 
