@@ -2,7 +2,7 @@
 My solutions to the problems posted at http://cryptopals.com/
 
 
-## Where are the solutions ?
+## Where are the Solutions?
 The code is not organized around the challenges itself. Some are in tests, some are solved through dedicated solvers,
 with my primary concern being maximising code re-usage as much as possible. If you want to just see the parts where
 the challenge is actually tackled, I marked the points-of-interest by a comment like:
