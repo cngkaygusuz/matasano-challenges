@@ -1,5 +1,7 @@
 # matasano-challenges
-My solutions to the problems posted at http://cryptopals.com/
+
+Solutions to the cryptopals.org challenes, up to 2.1 in golang.
+
 
 
 ## Where are the Solutions?
