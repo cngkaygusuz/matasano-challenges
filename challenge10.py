@@ -23,7 +23,7 @@ def cbc_dec(ciphertext, key, iv):
 
 def cbc_enc(plaintext, key, iv):
     cipher = AES.new(key, AES.MODE_CBC, iv)
-    return cipher.encrypt(pkcs7(plaintext))
+    return bytearray(cipher.encrypt(pkcs7(plaintext)))
 
 
 if __name__ == '__main__':

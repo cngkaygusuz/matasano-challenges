@@ -1,4 +1,5 @@
 import random
+random.seed(0)
 
 
 def chunk(input, size):
@@ -18,16 +19,16 @@ def xor(a, b):
 
 
 def randombytes(size):
-    return bytes([random.randint(0, 255) for _ in range(size)])
+    return bytearray([random.randint(0, 255) for _ in range(size)])
 
 
 def pkcs7(input: bytes, block_size=16):
     mod = len(input) % block_size
 
     if mod == 0:
-        return input
-
-    pad = block_size - mod
+        pad = 16
+    else:
+        pad = block_size - mod
 
     return input + bytes([pad] * pad)
 
