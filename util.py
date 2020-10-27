@@ -10,10 +10,10 @@ def chunk(input, size):
 def xor(a, b):
     assert len(a) == len(b)
 
-    retval = b''
+    retval = bytearray(len(a))
 
     for i in range(len(a)):
-        retval += bytes([a[i] ^ b[i]])
+        retval[i] = a[i] ^ b[i]
 
     return retval
 
