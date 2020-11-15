@@ -22,11 +22,15 @@ def op_ctr(data: bytearray, key: bytearray, nonce: int):
 
     for i in range(chunksize):
         dub = nonce_bytes + little_endian(counter)
-        keystream = ecb_enc_raw(dub, key)
         chunk = data[i*16:(i+1)*16]
-        retval += xor(chunk, keystream[:len(chunk)])
+        retval += op_ctr_raw(chunk, key, dub)
         counter += 1
     return retval
+
+
+def op_ctr_raw(chunk, key, dub):
+    keystream = ecb_enc_raw(dub, key)
+    return xor(chunk, keystream[:len(chunk)])
 
 
 def challenge():
